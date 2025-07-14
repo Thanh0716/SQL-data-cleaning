@@ -2,7 +2,7 @@
 
 This is an educational project on data cleaning and preparation using SQL. The original database in CSV format is located in the file club_member_info.csv. Here, we will explore the steps that need to be applied to obtain a cleansed version of the dataset.
 
-## View data
+## 1. View data
 View 10 first rows
 ```sql
 SELECT *
@@ -23,8 +23,8 @@ Result
 |mendie alexandrescu|46|single|malexandrescu8@state.gov|504-918-4753|34 Delladonna Terrace,New Orleans,Louisiana|Systems Administrator III|3/12/1921|
 | fey kloss|52|married|fkloss9@godaddy.com|808-177-0318|8976 Jackson Park,Honolulu,Hawaii|Chemical Engineer|11/5/2014|
 
-## Copy new table 
-### Create new table for cleanding 
+## 2. Copy new table 
+### 2.1 Create new table for cleanding 
 ```sql
 -- club_member_info definition
 CREATE TABLE club_member_info_cleanded (
@@ -38,10 +38,30 @@ CREATE TABLE club_member_info_cleanded (
 	membership_date VARCHAR(50)
 );
 ```
-### Copy all values from original table 
+### 2.2 Copy all values from original table 
 ```sql
 INSERT INTO club_member_info_cleanded 
 SELECT * 
 FROM club_member_info;
 ```
+## 3. Clean data
+### 3.1 Full name
+#### 3.1.1 Whitespace
+```sql
+UPDATE club_member_info_cleanded
+SET full_name  = TRIM(full_name)
+```
+Result
+|full_name|
+|---------|
+|addie lush|
+|ROCK CRADICK|
+|Sydel Sharvell|
+|Constantin de la cruz|
+|Gaylor Redhole|
+|Wanda del mar|
+|Joann Kenealy|
+|Joete Cudiff|
+|mendie alexandrescu|
+|fey kloss|
 
