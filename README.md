@@ -65,3 +65,28 @@ Result
 |mendie alexandrescu|
 |fey kloss|
 
+### 3.2 Age 
+#### 3.2.1 Whitespace
+```sql
+UPDATE club_member_info_cleanded
+SET age = CAST(SUBSTR(age, 1, 2) AS INTEGER)
+WHERE age >100 AND age <> ''
+```
+#### 3.2.2 Add AVG(age)
+```sql
+UPDATE club_member_info_cleanded
+SET age = 42
+WHERE age = ''
+```
+### 3.3 Leading and trailing whitespaces
+#### 3.3.1 martial_status
+```sql
+UPDATE club_member_info_cleanded
+SET martial_status = 'single'
+WHERE TRIM(martial_status) = ''
+```
+#### 3.3.2 job_title 
+```sql
+DELETE FROM club_member_info_cleanded 
+WHERE job_title = ''
+```
